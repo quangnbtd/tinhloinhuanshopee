@@ -276,7 +276,12 @@
         .negative { color: var(--error-color); }
         .zero { color: var(--warning-color); }
 
-        .error { color: var(--error-color); font-size: 0.8em; margin-top: 5px; min-height: 1.1em; } /* Giảm nhẹ font size lỗi */
+        .error {
+            color: var(--error-color);
+            font-size: 0.8em;
+            margin-top: 5px;
+            min-height: 1.1em; /* Giảm nhẹ font size lỗi */
+        }
 
         footer { text-align: center; padding: 15px; margin-top: auto; width: 100%; font-size: 0.85em; color: var(--text-color-footer); } /* Giảm padding và font size footer */
         footer p { margin-bottom: 5px; }
@@ -298,12 +303,10 @@
             transition: opacity var(--transition-speed) ease;
             pointer-events: none;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            /* display: none; /* Không cần thiết khi dùng opacity */
         }
 
         #tooltip-box.visible {
             opacity: 1;
-            /* display: block; /* Không cần thiết khi dùng opacity */
         }
 
         /* --- MEDIA QUERIES FOR LARGER SCREENS --- */
@@ -386,17 +389,16 @@
             <!-- THÔNG TIN CƠ BẢN -->
             <fieldset>
                 <legend>Thông Tin Sản Phẩm</legend>
-                <!-- Sử dụng .input-row -->
                 <div class="input-row">
                     <div class="form-group">
                         <label for="giaNhap">Giá Nhập (VNĐ)</label>
                         <input type="number" id="giaNhap" placeholder="Giá vốn sản phẩm" required min="0" aria-describedby="errorGiaNhap">
-                        <div class="error" id="errorGiaNhap"></div>
+                        <div class="error" id="errorGiaNhap" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                     <div class="form-group">
                         <label for="giaBan">Giá Bán Shopee (VNĐ)</label>
                         <input type="number" id="giaBan" placeholder="Giá hiển thị trên Shopee" required min="0" aria-describedby="errorGiaBan">
-                        <div class="error" id="errorGiaBan"></div>
+                        <div class="error" id="errorGiaBan" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                 </div>
             </fieldset>
@@ -404,21 +406,20 @@
             <!-- PHÍ SÀN -->
             <fieldset>
                 <legend>Phí Sàn</legend>
-                <!-- Sử dụng .input-row -->
                 <div class="input-row">
                     <div class="form-group">
                         <label for="nganhHangL1">Ngành hàng Cấp 1</label>
                         <select id="nganhHangL1" required aria-describedby="errorNganhHangL1">
                             <option value="">-- Chọn Cấp 1 --</option>
                         </select>
-                        <div class="error" id="errorNganhHangL1"></div>
+                        <div class="error" id="errorNganhHangL1" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                     <div class="form-group">
                         <label for="nganhHangL2">Ngành hàng Cấp 2</label>
                         <select id="nganhHangL2" required disabled aria-describedby="errorNganhHangL2">
                             <option value="">-- Chọn Cấp 2 --</option>
                         </select>
-                        <div class="error" id="errorNganhHangL2"></div>
+                        <div class="error" id="errorNganhHangL2" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                 </div>
                 <div class="form-group">
@@ -430,7 +431,7 @@
                     <label for="tyLeThue">% Thuế</label>
                     <i class="info-icon" data-tooltip="Thuế TNCN/TNDN bạn cần nộp theo quy định (nếu có).">ⓘ</i>
                     <input type="number" id="tyLeThue" placeholder="VD: 1.5" step="0.1" value="1.5" required min="0" aria-describedby="errorThue">
-                    <div class="error" id="errorThue"></div>
+                    <div class="error" id="errorThue" aria-live="polite"></div> {/* Thêm aria-live */}
                 </div>
                 <small style="font-size: 0.8em; color: var(--note-color); display: block; margin-top: -10px;">*Phí thanh toán (~4%) đã được tự động tính vào tổng chi phí.</small>
             </fieldset>
@@ -438,34 +439,32 @@
             <!-- CHI PHÍ MARKETING -->
             <fieldset>
                 <legend>Chi Phí Marketing (% trên Giá Bán)</legend>
-                <!-- Sử dụng .input-row -->
                 <div class="input-row">
                     <div class="form-group">
                         <label for="phanTramQuangCao">% Quảng cáo Shopee</label>
                         <i class="info-icon" data-tooltip="Chi phí chạy QC Đấu thầu từ khóa, Khám phá... (VAT 10% sẽ được tính thêm trên chi phí này).">ⓘ</i>
                         <input type="number" id="phanTramQuangCao" placeholder="VD: 18" step="0.1" value="0" required min="0" aria-describedby="errorQuangCao">
-                        <div class="error" id="errorQuangCao"></div>
+                        <div class="error" id="errorQuangCao" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                     <div class="form-group">
                         <label for="phanTramAffiliate">% Affiliate / TTLK</label>
                         <i class="info-icon" data-tooltip="Chi phí trả cho KOLs, KOCs, Affiliate Program của Shopee hoặc bên thứ ba.">ⓘ</i>
                         <input type="number" id="phanTramAffiliate" placeholder="VD: 15" step="0.1" value="0" required min="0" aria-describedby="errorAffiliate">
-                        <div class="error" id="errorAffiliate"></div>
+                        <div class="error" id="errorAffiliate" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                 </div>
-                 <!-- Sử dụng .input-row -->
                 <div class="input-row">
                     <div class="form-group">
                         <label for="phanTramVoucher">% Voucher / KM</label>
                         <i class="info-icon" data-tooltip="Tổng chi phí bạn chịu cho Voucher (do bạn tạo), Flash Sale, Combo Khuyến Mãi...">ⓘ</i>
                         <input type="number" id="phanTramVoucher" placeholder="VD: 5" step="0.1" value="0" required min="0" aria-describedby="errorVoucher">
-                        <div class="error" id="errorVoucher"></div>
+                        <div class="error" id="errorVoucher" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                     <div class="form-group">
                         <label for="phanTramMktKhac">% Chi phí MKT khác</label>
                         <i class="info-icon" data-tooltip="Gom các chi phí MKT khác như: booking live, chi phí sản xuất content, quảng cáo ngoại sàn, chi phí mẫu/test...">ⓘ</i>
                         <input type="number" id="phanTramMktKhac" placeholder="VD: 3" step="0.1" value="0" required min="0" aria-describedby="errorMktKhac">
-                        <div class="error" id="errorMktKhac"></div>
+                        <div class="error" id="errorMktKhac" aria-live="polite"></div> {/* Thêm aria-live */}
                     </div>
                 </div>
             </fieldset>
@@ -473,97 +472,95 @@
             <!-- VẬN HÀNH & RỦI RO -->
             <fieldset>
                 <legend>Vận Hành & Rủi Ro (% trên Giá Bán)</legend>
-                 <!-- Sử dụng .input-row -->
                 <div class="input-row">
                     <div class="form-group">
                         <label for="tyLeVanHanh">% Phí Vận Hành</label>
-                    <i class="info-icon" data-tooltip="Chi phí ước tính cho kho bãi, nhân sự, điện nước, khấu hao, phần mềm...">ⓘ</i>
-                    <input type="number" id="tyLeVanHanh" placeholder="VD: 5" step="0.1" value="0" required min="0" aria-describedby="errorVanHanh">
-                    <div class="error" id="errorVanHanh"></div>
+                        <i class="info-icon" data-tooltip="Chi phí ước tính cho kho bãi, nhân sự, điện nước, khấu hao, phần mềm...">ⓘ</i>
+                        <input type="number" id="tyLeVanHanh" placeholder="VD: 5" step="0.1" value="0" required min="0" aria-describedby="errorVanHanh">
+                        <div class="error" id="errorVanHanh" aria-live="polite"></div> {/* Thêm aria-live */}
+                    </div>
+                    <div class="form-group">
+                        <label for="tyLeBatThuong">% Phí Bất Thường</label>
+                        <i class="info-icon" data-tooltip="Chi phí dự phòng cho các rủi ro như hàng hỏng nhẹ, mất mát nhỏ, biến động giá...">ⓘ</i>
+                        <input type="number" id="tyLeBatThuong" placeholder="VD: 2" step="0.1" value="0" required min="0" aria-describedby="errorBatThuong">
+                        <div class="error" id="errorBatThuong" aria-live="polite"></div> {/* Thêm aria-live */}
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="tyLeBatThuong">% Phí Bất Thường</label>
-                    <i class="info-icon" data-tooltip="Chi phí dự phòng cho các rủi ro như hàng hỏng nhẹ, mất mát nhỏ, biến động giá...">ⓘ</i>
-                    <input type="number" id="tyLeBatThuong" placeholder="VD: 2" step="0.1" value="0" required min="0" aria-describedby="errorBatThuong">
-                    <div class="error" id="errorBatThuong"></div>
-                </div>
-            </div>
-        </fieldset>
+            </fieldset>
 
-        <!-- CHƯƠNG TRÌNH SHOPEE -->
-        <fieldset>
-            <legend>Chương Trình Shopee</legend>
-            <div class="checkbox-group">
-                <div class="form-group">
-                    <label class="checkbox-label" for="useVoucherXtra">
-                        <input type="checkbox" id="useVoucherXtra">
-                        <span>Tham gia Voucher Xtra?</span>
-                        <i class="info-icon" data-tooltip="Phí dịch vụ Voucher Xtra (~5%, tối đa 20.000đ/sản phẩm). Kiểm tra biểu phí mới nhất trên Kênh Người Bán.">ⓘ</i>
-                    </label>
+            <!-- CHƯƠNG TRÌNH SHOPEE -->
+            <fieldset>
+                <legend>Chương Trình Shopee</legend>
+                <div class="checkbox-group">
+                    <div class="form-group">
+                        <label class="checkbox-label" for="useVoucherXtra">
+                            <input type="checkbox" id="useVoucherXtra">
+                            <span>Tham gia Voucher Xtra?</span>
+                            <i class="info-icon" data-tooltip="Phí dịch vụ Voucher Xtra (~5%, tối đa 20.000đ/sản phẩm). Kiểm tra biểu phí mới nhất trên Kênh Người Bán.">ⓘ</i>
+                        </label>
+                        {/* Không cần div error cho checkbox đơn lẻ trừ khi có logic phức tạp */}
+                    </div>
                 </div>
-            </div>
-        </fieldset>
+            </fieldset>
 
-        <!-- CHI PHÍ KHÁC (VNĐ / ĐƠN) -->
-        <fieldset>
-            <legend>Chi Phí Khác (VNĐ / đơn)</legend>
-             <!-- Sử dụng .input-row -->
+            <!-- CHI PHÍ KHÁC (VNĐ / ĐƠN) -->
+            <fieldset>
+                <legend>Chi Phí Khác (VNĐ / đơn)</legend>
+                <div class="input-row">
+                    <div class="form-group">
+                        <label for="chiPhiDongGoi">Đóng gói / Xử lý</label>
+                        <i class="info-icon" data-tooltip="Chi phí cho mỗi đơn hàng: hộp carton, túi gói hàng, băng keo, xốp, in đơn...">ⓘ</i>
+                        <input type="number" id="chiPhiDongGoi" placeholder="VD: 2000" step="100" value="0" required min="0" aria-describedby="errorDongGoi">
+                        <div class="error" id="errorDongGoi" aria-live="polite"></div> {/* Thêm aria-live */}
+                    </div>
+                    <div class="form-group">
+                        <label for="chiPhiMktCoDinh">MKT cố định</label>
+                        <i class="info-icon" data-tooltip="Chi phí cố định trên mỗi đơn cho quà tặng kèm, hàng sample...">ⓘ</i>
+                        <input type="number" id="chiPhiMktCoDinh" placeholder="VD: 1000" step="100" value="0" required min="0" aria-describedby="errorMktCoDinh">
+                        <div class="error" id="errorMktCoDinh" aria-live="polite"></div> {/* Thêm aria-live */}
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- CHI PHÍ HOÀN HÀNG -->
+            <fieldset>
+                <legend>Chi Phí Hoàn Hàng (Ước tính)</legend>
+                <div class="input-row">
+                    <div class="form-group">
+                        <label for="tyLeHoan">% Tỷ lệ hoàn hàng</label>
+                        <i class="info-icon" data-tooltip="Tỷ lệ % đơn hàng dự kiến sẽ bị người mua trả hàng / hoàn tiền.">ⓘ</i>
+                        <input type="number" id="tyLeHoan" placeholder="VD: 2" step="0.1" value="0" required min="0" aria-describedby="errorTyLeHoan">
+                        <div class="error" id="errorTyLeHoan" aria-live="polite"></div> {/* Thêm aria-live */}
+                    </div>
+                    <div class="form-group">
+                        <label for="chiPhiXuLyHoan">Phí xử lý / đơn hoàn</label>
+                        <i class="info-icon" data-tooltip="Chi phí bạn phải chịu cho mỗi đơn bị hoàn: phí vận chuyển chiều về (nếu có), hao hụt giá trị hàng hóa, chi phí xử lý lại...">ⓘ</i>
+                        <input type="number" id="chiPhiXuLyHoan" placeholder="VD: 15000" step="100" value="0" required min="0" aria-describedby="errorXuLyHoan">
+                        <div class="error" id="errorXuLyHoan" aria-live="polite"></div> {/* Thêm aria-live */}
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sử dụng .input-row cho nút bấm -->
             <div class="input-row">
-                <div class="form-group">
-                    <label for="chiPhiDongGoi">Đóng gói / Xử lý</label>
-                    <i class="info-icon" data-tooltip="Chi phí cho mỗi đơn hàng: hộp carton, túi gói hàng, băng keo, xốp, in đơn...">ⓘ</i>
-                    <input type="number" id="chiPhiDongGoi" placeholder="VD: 2000" step="100" value="0" required min="0" aria-describedby="errorDongGoi">
-                    <div class="error" id="errorDongGoi"></div>
-                </div>
-                <div class="form-group">
-                    <label for="chiPhiMktCoDinh">MKT cố định</label>
-                    <i class="info-icon" data-tooltip="Chi phí cố định trên mỗi đơn cho quà tặng kèm, hàng sample...">ⓘ</i>
-                    <input type="number" id="chiPhiMktCoDinh" placeholder="VD: 1000" step="100" value="0" required min="0" aria-describedby="errorMktCoDinh">
-                    <div class="error" id="errorMktCoDinh"></div>
-                </div>
+                <button type="button" id="resetBtn">Đặt Lại</button>
+                <button type="button" id="tinhToanBtn">Tính Lợi Nhuận</button>
             </div>
-        </fieldset>
+        </form>
 
-        <!-- CHI PHÍ HOÀN HÀNG -->
-        <fieldset>
-            <legend>Chi Phí Hoàn Hàng (Ước tính)</legend>
-             <!-- Sử dụng .input-row -->
-            <div class="input-row">
-                <div class="form-group">
-                    <label for="tyLeHoan">% Tỷ lệ hoàn hàng</label>
-                    <i class="info-icon" data-tooltip="Tỷ lệ % đơn hàng dự kiến sẽ bị người mua trả hàng / hoàn tiền.">ⓘ</i>
-                    <input type="number" id="tyLeHoan" placeholder="VD: 2" step="0.1" value="0" required min="0" aria-describedby="errorTyLeHoan">
-                    <div class="error" id="errorTyLeHoan"></div>
-                </div>
-                <div class="form-group">
-                    <label for="chiPhiXuLyHoan">Phí xử lý / đơn hoàn</label>
-                    <i class="info-icon" data-tooltip="Chi phí bạn phải chịu cho mỗi đơn bị hoàn: phí vận chuyển chiều về (nếu có), hao hụt giá trị hàng hóa, chi phí xử lý lại...">ⓘ</i>
-                    <input type="number" id="chiPhiXuLyHoan" placeholder="VD: 15000" step="100" value="0" required min="0" aria-describedby="errorXuLyHoan">
-                    <div class="error" id="errorXuLyHoan"></div>
-                </div>
-            </div>
-        </fieldset>
+        <!-- RESULT AREA -->
+        <div id="ketQuaTrucTiep" aria-live="polite"></div> {/* Thêm aria-live */}
+    </div>
 
-        <!-- Sử dụng .input-row cho nút bấm -->
-        <div class="input-row">
-            <button type="button" id="resetBtn">Đặt Lại</button>
-            <button type="button" id="tinhToanBtn">Tính Lợi Nhuận</button>
-        </div>
-    </form>
+    <footer>
+        <p>Công cụ được phát triển bởi <strong>Vũ Quang Ecommerce</strong>.</p>
+        <p>
+            Kết nối hợp tác: <a href="tel:0386473757">0386 473 757</a> |
+            Website: <a href="https://www.vuthanhquang.com/" target="_blank" rel="noopener noreferrer">vuthanhquang.com</a>
+        </p>
+    </footer>
 
-    <!-- RESULT AREA -->
-    <div id="ketQuaTrucTiep"></div>
-</div>
-
-<footer>
-    <p>Công cụ được phát triển bởi <strong>Vũ Quang Ecommerce</strong>.</p>
-    <p>
-        Kết nối hợp tác: <a href="tel:0386473757">0386 473 757</a> |
-        Website: <a href="https://www.vuthanhquang.com/" target="_blank" rel="noopener noreferrer">vuthanhquang.com</a>
-    </p>
-</footer>
-
-<div id="tooltip-box"></div>
+    <div id="tooltip-box"></div>
 
 <script defer>
     // Configuration constants for easy maintenance
@@ -574,8 +571,8 @@
         MAX_PHI_VOUCHER_XTRA: 20000 // VNĐ
     };
 
-    // Category data (Giữ nguyên như cũ)
-    const categoryData = [ /* ... Dữ liệu ngành hàng của bạn ở đây ... */
+    // Category data (Giữ nguyên)
+    const categoryData = [
         { l1: "Máy tính & Laptop", l2: "Máy Tính Bàn", fee: 1.5 }, { l1: "Máy tính & Laptop", l2: "Laptop", fee: 1.5 }, { l1: "Máy tính & Laptop", l2: "Màn Hình", fee: 1.5 },
         { l1: "Điện Thoại & Phụ Kiện", l2: "Điện thoại", fee: 1.5 }, { l1: "Điện Thoại & Phụ Kiện", l2: "Máy tính bảng", fee: 1.5 },
         { l1: "Thiết Bị Âm Thanh", l2: "Amply và đầu chỉnh âm", fee: 7.0 }, { l1: "Thiết Bị Âm Thanh", l2: "Cáp âm thanh/ video & Đầu chuyển", fee: 7.0 }, { l1: "Thiết Bị Âm Thanh", l2: "Tai nghe nhét tai & chụp tai", fee: 7.0 }, { l1: "Thiết Bị Âm Thanh", l2: "Dàn âm thanh", fee: 7.0 }, { l1: "Thiết Bị Âm Thanh", l2: "Máy nghe nhạc", fee: 7.0 }, { l1: "Thiết Bị Âm Thanh", l2: "Micro thu âm", fee: 7.0 },
@@ -612,7 +609,6 @@
         ...["Phụ kiện xe máy", "Mũ bảo hiểm & Phụ kiện", "Phụ tùng xe máy"].map(l2 => ({ l1: "Mô tô, xe máy", l2: l2, fee: 10.0 })),
         ...["Họa cụ", "Quà Tặng - Giấy Gói", "Thư Tín", "Sổ & Giấy Các Loại", "Thiết Bị Trường Học", "Bút Các Loại"].map(l2 => ({ l1: "Văn Phòng Phẩm", l2: l2, fee: 10.0 }))
     ];
-
 
     // Input & Element References (Giữ nguyên)
     const giaNhapInput = document.getElementById('giaNhap');
@@ -655,51 +651,45 @@
     const errorTyLeHoan = document.getElementById('errorTyLeHoan');
     const errorXuLyHoan = document.getElementById('errorXuLyHoan');
 
-    // --- JavaScript Logic (Giữ nguyên như cũ) ---
-    // Helper Functions (formatCurrency, clearErrors, validateInput, validateSelect)
-    // Dropdown Logic (populateL1Dropdown, updateL2Dropdown, updateFeeDisplay)
-    // Tooltip Logic (showTooltip, hideTooltip, currentTooltipTarget)
-    // Debounce Function
-    // Calculation Logic (tinhLoiNhuan)
-    // Event Listeners (DOMContentLoaded, dropdown changes, button clicks, reset, keypress)
+    // --- JavaScript Logic ---
+    // Helper Functions (Giữ nguyên)
+    function formatCurrency(value) { /* ... */ }
+    function clearErrors() { /* ... */ }
+    function validateInput(inputElement, errorElement, message, allowZero = false, isPositive = false) { /* ... */ }
+    function validateSelect(selectElement, errorElement, message) { /* ... */ }
+    // Dropdown Logic (Giữ nguyên)
+    function populateL1Dropdown() { /* ... */ }
+    function updateL2Dropdown() { /* ... */ }
+    function updateFeeDisplay() { /* ... */ }
+    // Tooltip Logic (Giữ nguyên)
+    let currentTooltipTarget = null;
+    let tooltipTimeout = null;
+    function showTooltip(iconElement) { /* ... */ }
+    function hideTooltip(delay = 0) { /* ... */ }
+    // Debounce Function (Giữ nguyên - có thể không dùng đến nhưng vẫn hữu ích)
+    function debounce(func, wait) { /* ... */ }
+    // Calculation Logic (Giữ nguyên)
+    function tinhLoiNhuan() { /* ... */ }
 
-    // --- Copy toàn bộ phần JavaScript từ code gốc của bạn vào đây ---
-     /**
-     * Format a number to Vietnamese currency format.
-     * @param {number} value - The number to format.
-     * @returns {string} Formatted currency string.
-     */
+    // --- COPY/PASTE CODE JAVASCRIPT HOÀN CHỈNH TỪ PHIÊN BẢN TRƯỚC VÀO ĐÂY ---
+    // --- ĐẢM BẢO KHÔNG CÓ KHỐI CODE GẮN LISTENER "INPUT"/"CHANGE" GỌI TINHLOINHUAN ---
      function formatCurrency(value) {
         const numValue = Number(value);
         if (isNaN(numValue)) return 'Lỗi';
-        // Làm tròn đến số nguyên gần nhất trước khi định dạng
         return Math.round(numValue).toLocaleString('vi-VN');
     }
 
-
-    /**
-     * Clear all error messages.
-     */
     function clearErrors() {
         const errorElements = document.querySelectorAll('.error');
         errorElements.forEach(el => el.textContent = '');
     }
 
-   /**
-     * Validate an input field.
-     * @param {HTMLElement} inputElement - The input element.
-     * @param {HTMLElement} errorElement - The error message element.
-     * @param {string} message - The field name for error messages.
-     * @param {boolean} allowZero - Allow zero as valid input.
-     * @param {boolean} isPositive - Require positive number.
-     * @returns {boolean} Whether the input is valid.
-     */
-   function validateInput(inputElement, errorElement, message, allowZero = false, isPositive = false) {
-        if (!inputElement || !errorElement) return true; // Bỏ qua nếu element không tồn tại
+    function validateInput(inputElement, errorElement, message, allowZero = false, isPositive = false) {
+        if (!inputElement || !errorElement) return true;
         if (inputElement.disabled) { errorElement.textContent = ''; return true; }
 
         const valueStr = inputElement.value.trim();
-        const fieldName = message || inputElement.previousElementSibling?.textContent || inputElement.id; // Cố gắng lấy tên field
+        const fieldName = message || inputElement.previousElementSibling?.textContent?.replace('(VNĐ)', '').replace('%', '').trim() || inputElement.id;
 
         if (valueStr === '') {
             errorElement.textContent = `Vui lòng nhập ${fieldName}.`;
@@ -714,12 +704,10 @@
             errorElement.textContent = `${fieldName} không được âm.`;
             return false;
         }
-         // Nếu không cho phép số 0 và giá trị là 0
         if (!allowZero && valueNum === 0) {
              errorElement.textContent = `${fieldName} phải lớn hơn 0.`;
              return false;
          }
-         // Nếu yêu cầu số dương và giá trị không dương
         if (isPositive && valueNum <= 0) {
              errorElement.textContent = `${fieldName} phải là số dương.`;
              return false;
@@ -728,16 +716,8 @@
         return true;
     }
 
-
-    /**
-     * Validate a select element.
-     * @param {HTMLElement} selectElement - The select element.
-     * @param {HTMLElement} errorElement - The error message element.
-     * @param {string} message - The error message.
-     * @returns {boolean} Whether the select is valid.
-     */
     function validateSelect(selectElement, errorElement, message) {
-        if (!selectElement || !errorElement) return true; // Bỏ qua nếu element không tồn tại
+        if (!selectElement || !errorElement) return true;
         if (selectElement.disabled) { errorElement.textContent = ''; return true; }
 
         if (selectElement.value === '') {
@@ -748,16 +728,13 @@
         return true;
     }
 
-    /**
-     * Populate the Level 1 category dropdown.
-     */
     function populateL1Dropdown() {
         if (!categoryData || categoryData.length === 0) {
             nganhHangL1Select.innerHTML = '<option value="">Dữ liệu ngành hàng không khả dụng</option>';
             nganhHangL1Select.disabled = true;
             return;
         }
-        nganhHangL1Select.innerHTML = '<option value="">-- Chọn Cấp 1 --</option>'; // Reset dropdown
+        nganhHangL1Select.innerHTML = '<option value="">-- Chọn Cấp 1 --</option>';
         const l1Categories = [...new Set(categoryData.map(item => item.l1))].sort();
         l1Categories.forEach(l1 => {
             const option = document.createElement('option');
@@ -765,19 +742,16 @@
             option.textContent = l1;
             nganhHangL1Select.appendChild(option);
         });
-         nganhHangL1Select.disabled = false; // Ensure enabled
+         nganhHangL1Select.disabled = false;
     }
 
-    /**
-     * Update the Level 2 category dropdown based on selected Level 1.
-     */
     function updateL2Dropdown() {
         const selectedL1 = nganhHangL1Select.value;
         nganhHangL2Select.innerHTML = '<option value="">-- Chọn Cấp 2 --</option>';
         phiCoDinhDisplay.textContent = 'Chưa chọn ngành hàng';
-        nganhHangL2Select.disabled = true; // Disable by default
-        if (errorNganhHangL1) errorNganhHangL1.textContent = ''; // Clear L1 error on change
-        if (errorNganhHangL2) errorNganhHangL2.textContent = ''; // Clear L2 error on L1 change
+        nganhHangL2Select.disabled = true;
+        if (errorNganhHangL1) errorNganhHangL1.textContent = '';
+        if (errorNganhHangL2) errorNganhHangL2.textContent = '';
 
         if (selectedL1) {
             const l2Categories = categoryData
@@ -792,21 +766,17 @@
                     option.textContent = l2;
                     nganhHangL2Select.appendChild(option);
                 });
-                nganhHangL2Select.disabled = false; // Enable L2 dropdown
+                nganhHangL2Select.disabled = false;
             } else {
                 phiCoDinhDisplay.textContent = 'Không có Cấp 2 cho ngành này';
             }
         }
     }
 
-
-    /**
-     * Update the fee display based on selected categories.
-     */
     function updateFeeDisplay() {
         const selectedL1 = nganhHangL1Select.value;
         const selectedL2 = nganhHangL2Select.value;
-        if (errorNganhHangL2) errorNganhHangL2.textContent = ''; // Clear L2 error on L2 change
+        if (errorNganhHangL2) errorNganhHangL2.textContent = '';
 
         if (selectedL1 && selectedL2) {
             const category = categoryData.find(item => item.l1 === selectedL1 && item.l2 === selectedL2);
@@ -823,128 +793,88 @@
         }
     }
 
-    // Tooltip Logic
-    let currentTooltipTarget = null;
-    let tooltipTimeout = null; // Add timeout variable
-
-    /**
-     * Show the tooltip for an info icon.
-     * @param {HTMLElement} iconElement - The info icon element.
-     */
      function showTooltip(iconElement) {
-        clearTimeout(tooltipTimeout); // Clear any existing hide timeout
+        clearTimeout(tooltipTimeout);
         const tooltipText = iconElement.getAttribute('data-tooltip');
         if (!tooltipText || tooltipText.trim() === '' || !tooltipBox) {
-            // console.warn('Tooltip text/box is empty or missing for element:', iconElement);
             return;
         }
-        // console.log('Showing tooltip for:', tooltipText);
         tooltipBox.textContent = tooltipText;
-
-        // Make it visible first to calculate dimensions correctly
         tooltipBox.style.display = 'block';
-        tooltipBox.style.opacity = '0'; // Keep it invisible initially for smooth transition
-        tooltipBox.classList.add('visible'); // Add class but it's still opacity 0
+        tooltipBox.style.opacity = '0';
+        tooltipBox.classList.add('visible');
 
-        // Calculate position
         const iconRect = iconElement.getBoundingClientRect();
-        const tooltipRect = tooltipBox.getBoundingClientRect(); // Get dimensions after display block
+        const tooltipRect = tooltipBox.getBoundingClientRect();
 
-        let top = iconRect.top + window.scrollY - tooltipRect.height - 10; // Position above icon
-        let left = iconRect.left + window.scrollX + (iconRect.width / 2) - (tooltipRect.width / 2); // Center horizontally
+        let top = iconRect.top + window.scrollY - tooltipRect.height - 10;
+        let left = iconRect.left + window.scrollX + (iconRect.width / 2) - (tooltipRect.width / 2);
 
-        // Adjust if too high (goes off screen top or overlaps header)
         if (top < window.scrollY + 5) {
-            top = iconRect.bottom + window.scrollY + 10; // Position below icon
+            top = iconRect.bottom + window.scrollY + 10;
         }
-
-        // Adjust if too far left/right
         const viewportWidth = document.documentElement.clientWidth;
         if (left < window.scrollX + 5) {
-            left = window.scrollX + 5; // Align to left edge + padding
+            left = window.scrollX + 5;
         } else if (left + tooltipRect.width > viewportWidth - 5) {
-            left = viewportWidth - tooltipRect.width - 5; // Align to right edge - padding
+            left = viewportWidth - tooltipRect.width - 5;
         }
 
         tooltipBox.style.top = `${top}px`;
         tooltipBox.style.left = `${left}px`;
-
-        // Force reflow maybe needed for transition? Usually not for opacity.
-        // void tooltipBox.offsetWidth;
-
-        // Now make it truly visible with transition
         tooltipBox.style.opacity = '1';
-
         currentTooltipTarget = iconElement;
     }
 
-
-    /**
-     * Hide the tooltip.
-     * @param {number} delay - Optional delay in ms before hiding.
-     */
      function hideTooltip(delay = 0) {
-        clearTimeout(tooltipTimeout); // Clear any existing hide timeout
+        clearTimeout(tooltipTimeout);
         if (delay > 0) {
             tooltipTimeout = setTimeout(() => {
                 if (tooltipBox) {
                     tooltipBox.style.opacity = '0';
-                    // Use transitionend event to set display: none after transition completes
                     tooltipBox.addEventListener('transitionend', function handleTransitionEnd() {
                         tooltipBox.style.display = 'none';
                         tooltipBox.classList.remove('visible');
-                        tooltipBox.removeEventListener('transitionend', handleTransitionEnd); // Clean up listener
-                    }, { once: true }); // Ensure listener runs only once
+                        tooltipBox.removeEventListener('transitionend', handleTransitionEnd);
+                    }, { once: true });
                 }
                 currentTooltipTarget = null;
             }, delay);
         } else {
             if (tooltipBox) {
                 tooltipBox.style.opacity = '0';
-                tooltipBox.style.display = 'none'; // Hide immediately if no delay
+                tooltipBox.style.display = 'none';
                 tooltipBox.classList.remove('visible');
             }
             currentTooltipTarget = null;
         }
     }
 
-    /**
-     * Debounce a function to limit its execution rate.
-     * @param {Function} func - The function to debounce.
-     * @param {number} wait - The debounce wait time in milliseconds.
-     * @returns {Function} The debounced function.
-     */
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
             const later = () => {
                 clearTimeout(timeout);
-                func.apply(this, args); // Use apply to maintain context
+                func.apply(this, args);
             };
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
     }
 
-    /**
-     * Calculate profit based on input values and display the result.
-     */
     function tinhLoiNhuan() {
-        // Clear previous state
         clearErrors();
         if (ketQuaTrucTiepDiv) {
              ketQuaTrucTiepDiv.innerHTML = '';
-             ketQuaTrucTiepDiv.className = 'ketQuaTrucTiep'; // Reset class list, keep base class
+             ketQuaTrucTiepDiv.className = 'ketQuaTrucTiep';
              ketQuaTrucTiepDiv.classList.remove('visible');
-             ketQuaTrucTiepDiv.style.maxHeight = '0'; // Ensure it's hidden
+             ketQuaTrucTiepDiv.style.maxHeight = '0';
              ketQuaTrucTiepDiv.style.opacity = '0';
         }
 
-
-        // Validate inputs
         let formIsValid = true;
-        formIsValid &= validateInput(giaNhapInput, errorGiaNhap, 'Giá nhập', true); // Allow 0 for cost
-        formIsValid &= validateInput(giaBanInput, errorGiaBan, 'Giá bán', false, true); // Must be > 0
+        formIsValid &= validateInput(giaNhapInput, errorGiaNhap, 'Giá nhập', true);
+        formIsValid &= validateInput(giaBanInput, errorGiaBan, 'Giá bán', false, true);
         formIsValid &= validateSelect(nganhHangL1Select, errorNganhHangL1, 'Vui lòng chọn Ngành hàng Cấp 1.');
         formIsValid &= validateSelect(nganhHangL2Select, errorNganhHangL2, 'Vui lòng chọn Ngành hàng Cấp 2.');
         formIsValid &= validateInput(tyLeThueInput, errorThue, '% Thuế', true);
@@ -959,17 +889,14 @@
         formIsValid &= validateInput(tyLeHoanInput, errorTyLeHoan, '% Tỷ lệ hoàn', true);
         formIsValid &= validateInput(chiPhiXuLyHoanInput, errorXuLyHoan, 'Phí xử lý đơn hoàn', true);
 
-
         if (!formIsValid) {
             if (ketQuaTrucTiepDiv) {
                  ketQuaTrucTiepDiv.innerHTML = '<div class="error" style="text-align: center; font-weight: bold;">Vui lòng kiểm tra lại các ô nhập liệu có lỗi.</div>';
-                 // Force visibility for error message
-                 ketQuaTrucTiepDiv.style.maxHeight = '100px'; // Give it some height
+                 ketQuaTrucTiepDiv.style.maxHeight = '100px';
                  ketQuaTrucTiepDiv.style.opacity = '1';
                  ketQuaTrucTiepDiv.classList.add('visible');
-                 ketQuaTrucTiepDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to center
+                 ketQuaTrucTiepDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-             // Find first invalid input and focus it
              const firstError = form.querySelector('.error:not(:empty)');
              if (firstError) {
                  const inputId = firstError.id.replace('error', '');
@@ -977,14 +904,16 @@
                  if (inputElement) {
                     inputElement.focus();
                     inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                 } else {
+                    // Fallback if input not found by id convention
+                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
                  }
              }
             return;
         }
 
-        // Get validated values
         const giaNhap = parseFloat(giaNhapInput.value) || 0;
-        const giaBan = parseFloat(giaBanInput.value) || 0; // Already validated > 0
+        const giaBan = parseFloat(giaBanInput.value) || 0;
         const selectedL1 = nganhHangL1Select.value;
         const selectedL2 = nganhHangL2Select.value;
         const categoryInfo = categoryData.find(item => item.l1 === selectedL1 && item.l2 === selectedL2);
@@ -1015,61 +944,38 @@
         const tyLeHoan = (parseFloat(tyLeHoanInput.value) || 0) / 100;
         const chiPhiXuLyHoan = parseFloat(chiPhiXuLyHoanInput.value) || 0;
 
-        // Calculations
         const cpPhiCoDinh = giaBan * tyLePhiCoDinh;
         const cpPhiThanhToan = giaBan * CONFIG.TYLE_PHI_THANH_TOAN_CO_DINH;
-        const cpThue = giaBan * tyLeThue; // Thuế tính trên Giá Bán
-        const cpQuangCaoRaw = giaBan * phanTramQuangCao; // Chi phí QC chưa VAT
-        const cpVatQuangCao = cpQuangCaoRaw * CONFIG.TYLE_VAT_QUANG_CAO; // VAT trên chi phí QC
-        const cpQuangCaoTotal = cpQuangCaoRaw + cpVatQuangCao; // Tổng chi phí QC (bao gồm VAT)
+        const cpThue = giaBan * tyLeThue;
+        const cpQuangCaoRaw = giaBan * phanTramQuangCao;
+        const cpVatQuangCao = cpQuangCaoRaw * CONFIG.TYLE_VAT_QUANG_CAO;
+        const cpQuangCaoTotal = cpQuangCaoRaw + cpVatQuangCao;
         const cpAffiliate = giaBan * phanTramAffiliate;
-        const cpVoucher = giaBan * phanTramVoucher; // Voucher người bán chịu
+        const cpVoucher = giaBan * phanTramVoucher;
         const cpMktKhacPercent = giaBan * phanTramMktKhac;
         const cpVanHanh = giaBan * tyLeVanHanh;
-        const cpBatThuong = giaBan * tyLeBatThuong; // Phí rủi ro/bất thường
+        const cpBatThuong = giaBan * tyLeBatThuong;
         let cpVX = 0;
         if (useVX) { cpVX = Math.min(giaBan * CONFIG.TYLE_VOUCHER_XTRA, CONFIG.MAX_PHI_VOUCHER_XTRA); }
         const cpDongGoi = chiPhiDongGoi;
         const cpMktCoDinh = chiPhiMktCoDinh;
+        const cpHoanTrungBinh = tyLeHoan * chiPhiXuLyHoan;
 
-        // Tính chi phí hoàn hàng trung bình trên mỗi đơn *thành công*
-        // Tổng chi phí xử lý hoàn cho N đơn = N * tyLeHoan * chiPhiXuLyHoan
-        // Số đơn thành công = N * (1 - tyLeHoan)
-        // Chi phí hoàn trung bình/đơn thành công = (N * tyLeHoan * chiPhiXuLyHoan) / (N * (1 - tyLeHoan))
-        // => chiPhiHoanTB = (tyLeHoan * chiPhiXuLyHoan) / (1 - tyLeHoan)
-        // Tuy nhiên, cách tính đơn giản hơn và thường dùng là phân bổ chi phí hoàn dự kiến vào tất cả các đơn:
-        const cpHoanTrungBinh = tyLeHoan * chiPhiXuLyHoan; // Chi phí hoàn phân bổ trên mỗi đơn bán ra (ước tính)
-
-        // Tổng các loại chi phí (KHÔNG bao gồm giá nhập)
         const tongChiPhiTruGiaNhap =
-            cpPhiCoDinh +         // Phí cố định theo ngành hàng
-            cpPhiThanhToan +      // Phí thanh toán (4%)
-            cpThue +              // Thuế TNCN/TNDN (nếu có)
-            cpQuangCaoTotal +     // Phí quảng cáo Shopee (đã gồm VAT)
-            cpAffiliate +         // Phí Affiliate/TTLK
-            cpVoucher +           // Phí Voucher/KM người bán tạo
-            cpMktKhacPercent +    // Chi phí MKT khác (%)
-            cpVanHanh +           // Chi phí vận hành (%)
-            cpBatThuong +         // Chi phí rủi ro/bất thường (%)
-            cpVX +                // Phí Voucher Xtra (nếu tham gia)
-            cpDongGoi +           // Chi phí đóng gói/xử lý (cố định/đơn)
-            cpMktCoDinh +         // Chi phí MKT cố định/đơn (quà tặng...)
-            cpHoanTrungBinh;      // Chi phí hoàn hàng trung bình/đơn (ước tính)
+            cpPhiCoDinh + cpPhiThanhToan + cpThue + cpQuangCaoTotal + cpAffiliate +
+            cpVoucher + cpMktKhacPercent + cpVanHanh + cpBatThuong + cpVX +
+            cpDongGoi + cpMktCoDinh + cpHoanTrungBinh;
 
-        // Tổng chi phí bao gồm cả giá gốc
         const tongChiPhiBaoGomGiaGoc = tongChiPhiTruGiaNhap + giaNhap;
-
-        // Lợi nhuận
         const loiNhuan = giaBan - tongChiPhiBaoGomGiaGoc;
         const tySuatLoiNhuan = giaBan > 0 ? (loiNhuan / giaBan) * 100 : 0;
 
-        // Display result
         if (ketQuaTrucTiepDiv) {
              let resultText = '';
              let resultClass = '';
              let colorClass = '';
 
-             if (loiNhuan > 0.001) { // Use a small threshold for floating point
+             if (loiNhuan > 0.001) {
                  resultClass = 'result-positive';
                  colorClass = 'positive';
                  resultText = 'Lợi nhuận ước tính:';
@@ -1094,73 +1000,60 @@
             `;
             ketQuaTrucTiepDiv.classList.add(resultClass);
 
-            // Trigger animation and scroll to result
-            // Use requestAnimationFrame for smoother rendering before transition
             requestAnimationFrame(() => {
-                ketQuaTrucTiepDiv.style.maxHeight = ketQuaTrucTiepDiv.scrollHeight + 'px'; // Set max-height to content height
+                ketQuaTrucTiepDiv.style.maxHeight = ketQuaTrucTiepDiv.scrollHeight + 'px';
                 ketQuaTrucTiepDiv.style.opacity = '1';
                 ketQuaTrucTiepDiv.classList.add('visible');
-                // Scroll after transition starts
                 setTimeout(() => {
-                    ketQuaTrucTiepDiv.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to center for better view
-                }, 50); // Small delay to allow transition to begin
+                    ketQuaTrucTiepDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 50);
             });
         }
     }
-
-
-    // Debounced version of tinhLoiNhuan
-    const debouncedTinhLoiNhuan = debounce(tinhLoiNhuan, 400); // Increased debounce time slightly
 
     // Event Listeners
     document.addEventListener('DOMContentLoaded', () => {
         populateL1Dropdown();
 
-        // Tooltip listeners using event delegation on the container
+        // Tooltip listeners (Giữ nguyên)
         const container = document.querySelector('.container');
         if (container) {
              container.addEventListener('click', function(event) {
                  const target = event.target;
                  if (target.classList.contains('info-icon')) {
-                     event.stopPropagation(); // Prevent triggering document click listener immediately
-                     // console.log('Info icon clicked:', target);
+                     event.stopPropagation();
                      if (target === currentTooltipTarget) {
-                         hideTooltip(); // Click again to hide
+                         hideTooltip();
                      } else {
-                         hideTooltip(); // Hide any existing tooltip
-                         showTooltip(target); // Show new one
+                         hideTooltip();
+                         showTooltip(target);
                      }
                  }
              });
          }
-
-         // Global click listener to hide tooltip when clicking outside
          document.addEventListener('click', function(event) {
              if (currentTooltipTarget && tooltipBox && !tooltipBox.contains(event.target) && !event.target.classList.contains('info-icon')) {
-                 hideTooltip(100); // Hide with a slight delay
+                 hideTooltip(100);
              }
          });
 
-
-        // Dropdown listeners
+        // Dropdown listeners (Chỉ cập nhật UI, không validate/tính toán)
         if(nganhHangL1Select) nganhHangL1Select.addEventListener('change', () => {
             updateL2Dropdown();
-            updateFeeDisplay(); // Update fee display immediately after L1 changes
-            validateSelect(nganhHangL1Select, errorNganhHangL1, 'Vui lòng chọn Ngành hàng Cấp 1.'); // Re-validate L1
+            updateFeeDisplay();
+            // KHÔNG validateSelect ở đây
         });
         if(nganhHangL2Select) nganhHangL2Select.addEventListener('change', () => {
             updateFeeDisplay();
-            validateSelect(nganhHangL2Select, errorNganhHangL2, 'Vui lòng chọn Ngành hàng Cấp 2.'); // Re-validate L2
+            // KHÔNG validateSelect ở đây
         });
 
-        // Button listeners
-        if(tinhToanBtn) tinhToanBtn.addEventListener('click', tinhLoiNhuan); // Use non-debounced for explicit click
+        // Button listeners (Gọi trực tiếp tinhLoiNhuan)
+        if(tinhToanBtn) tinhToanBtn.addEventListener('click', tinhLoiNhuan);
         if(resetBtn) resetBtn.addEventListener('click', () => {
             if (form) form.reset();
-            // Reset dropdowns and display
             if (nganhHangL1Select) nganhHangL1Select.value = '';
-            updateL2Dropdown(); // This also resets L2 and fee display
-            // Clear results and errors
+            updateL2Dropdown();
             if(ketQuaTrucTiepDiv) {
                  ketQuaTrucTiepDiv.innerHTML = '';
                  ketQuaTrucTiepDiv.className = 'ketQuaTrucTiep';
@@ -1170,28 +1063,13 @@
             }
             clearErrors();
             hideTooltip();
-            // Scroll to top might be helpful after reset
-            // window.scrollTo({ top: 0, behavior: 'smooth' });
-            if(giaNhapInput) giaNhapInput.focus(); // Focus on the first input
+            if(giaNhapInput) giaNhapInput.focus();
         });
-
-        // Input listeners for potential live update (using debounce)
-        const inputsForDebounce = form.querySelectorAll('input[type="number"], input[type="text"], select, input[type="checkbox"]');
-        inputsForDebounce.forEach(input => {
-            input.addEventListener('input', debouncedTinhLoiNhuan); // Trigger on input change
-            input.addEventListener('change', debouncedTinhLoiNhuan); // Also trigger on change (for select, checkbox)
-        });
-
-        // Optional: Prevent Enter key from submitting the form if it's inside one
         if (form) {
             form.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                     // Check if the target is an input where Enter might be expected (e.g., textarea - none here)
-                     // If not, prevent default and maybe trigger calculation
-                     if (event.target.tagName !== 'TEXTAREA') {
-                         event.preventDefault();
-                         tinhLoiNhuan(); // Trigger calculation on Enter
-                     }
+                if (event.key === 'Enter' && event.target.tagName !== 'TEXTAREA') {
+                     event.preventDefault();
+                     tinhLoiNhuan(); // Gọi hàm tính toán khi nhấn Enter
                 }
             });
         }
